@@ -35,3 +35,12 @@ html { font-family: 'Montserrat'; background-color: #E0E0E0 }
 }
 
 .section-expenses li:nth-child(even) .expense { background-color: #F2F2F2 }
+
+
+/* Project Add view */
+form ul li.category {
+    display: inline-block;
+    background-color: white;
+    padding: 5px 10px;
+    margin-right: 5px;
+}

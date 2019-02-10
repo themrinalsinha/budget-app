@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container">
+    <form action="" method="POST"> {% csrf_token %}
+        {{ form }}
+        <label for="categoryInput">Expense Category (hit Enter after every category)</label>
+        <input type="text" id="categoryInput" name="categoryInput">
+        <input type="hidden" name="categoriesString">
+        <ul id="categoriesContainer"></ul>
+
+        <button type="submit" class="btn">Start Project</button>
+    </form>
+</div>
+
+{% endblock %}
