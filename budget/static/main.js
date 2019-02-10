@@ -1,9 +1,10 @@
-// Self executing function
-(function() {
-    document.querySelector('#categoryInput').addEventListener('keydown', function(e){
+(function () {
+    document.querySelector('#categoryInput').addEventListener('keydown', function (e) {
         if (e.keyCode != 13) {
             return;
         }
+
+        e.preventDefault()
 
         var categoryName = this.value
         this.value = ''
@@ -13,24 +14,23 @@
 
     function addNewCategory(name) {
         document.querySelector('#categoriesContainer').insertAdjacentHTML('beforeend',
-        `<li class="category">
-                <span class="name">${name}</span>
-                <span onclick="removeCategory(this)" class="btnRemove bold">x</span>
-        </li>`
-        )
+            `<li class="category">
+      <span class="name">${name}</span>
+      <span onclick="removeCategory(this)" class="btnRemove bold">X</span>
+    </li>`)
     }
 })()
-
 
 function fetchCategoryArray() {
     var categories = []
 
-    document.querySelector('.category').forEach(function(e) {
+    document.querySelectorAll('.category').forEach(function (e) {
         name = e.querySelector('.name').innerHTML
-        if (name == '') return
+        if (name == '') return;
 
         categories.push(name)
     })
+
     return categories
 }
 
@@ -39,7 +39,7 @@ function updateCategoriesString() {
     document.querySelector('input[name="categoriesString"]').value = categories.join(',')
 }
 
-function removeCategory() {
+function removeCategory(e) {
     e.parentElement.remove()
     updateCategoriesString()
 }
