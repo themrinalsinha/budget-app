@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.text import slugify
+from django.shortcuts import reverse
 
 # Create your models here.
 class Project(models.Model):
@@ -13,6 +14,11 @@ class Project(models.Model):
 
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse('detail', kwargs={'slug': self.project.slug})
+
+
 
 class Category(models.Model):
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
